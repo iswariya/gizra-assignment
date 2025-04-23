@@ -104,4 +104,20 @@ trait InnerElementLayoutThemeTrait {
     ];
   }
 
+  /**
+   * Build custom "Card" layout.
+   *
+   * @param array $items
+   *   The elements as render array.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function buildInnerElementCustomLayout(array $items): array {
+    return [
+      '#theme' => 'server_theme_inner_element_custom_layout',
+      '#items' => $this->wrapContainerVerticalSpacing($items),
+    ];
+  }
+
 }

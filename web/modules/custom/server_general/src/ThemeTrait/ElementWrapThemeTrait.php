@@ -69,6 +69,28 @@ trait ElementWrapThemeTrait {
   }
 
   /**
+   * Render elements horizontally.
+   *
+   * @param array $element
+   *   Render array.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function wrapContainerHorizontal(array $element): array {
+    $element = $this->filterEmptyElements($element);
+    if (empty($element)) {
+      // Element is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_container_horizontal',
+      '#items' => $element,
+    ];
+  }
+
+  /**
    * Wrap an element with a regular vertical spacing.
    *
    * @param array $element
@@ -210,6 +232,31 @@ trait ElementWrapThemeTrait {
   }
 
   /**
+   * Wrap an element with background color.
+   *
+   * @param array $element
+   *   Render array.
+   * @param string $bg_color
+   *   Background Color.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function wrapContainerBackgroundColor(array $element, string $bg_color): array {
+    $element = $this->filterEmptyElements($element);
+    if (empty($element)) {
+      // Element is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_container_bg_color',
+      '#items' => $element,
+      '#bg_color' => $bg_color,
+    ];
+  }
+
+  /**
    * Wrap an element with bottom padding.
    *
    * You will likely want to use `wrapConditionalContainerBottomPadding`.
@@ -230,6 +277,34 @@ trait ElementWrapThemeTrait {
     return [
       '#theme' => 'server_theme_container_bottom_padding',
       '#items' => $element,
+    ];
+  }
+
+  /**
+   * Wrap an element with top and bottom padding.
+   *
+   * @param array $element
+   *   Render array.
+   * @param string $top
+   *   Top padding value.
+   * @param string $bottom
+   *   Bottom padding value.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function wrapContainerTopBottomPadding(array $element, string $top, string $bottom): array {
+    $element = $this->filterEmptyElements($element);
+    if (empty($element)) {
+      // Element is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_container_top_bottom_padding',
+      '#items' => $element,
+      '#top' => $top,
+      '#bottom' => $bottom,
     ];
   }
 
@@ -258,6 +333,28 @@ trait ElementWrapThemeTrait {
       '#element' => $element,
       '#width' => $width,
       '#is_center' => $is_center,
+    ];
+  }
+
+  /**
+   * Wrap an element with border.
+   *
+   * @param array $element
+   *   The render array.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function wrapContainerBorder(array $element): array {
+    $element = $this->filterEmptyElements($element);
+    if (empty($element)) {
+      // Element is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_container_border',
+      '#element' => $element,
     ];
   }
 
@@ -303,6 +400,29 @@ trait ElementWrapThemeTrait {
 
     return [
       '#theme' => 'server_theme_container_rounded_corners_full',
+      '#items' => $element,
+    ];
+  }
+
+
+  /**
+   * Wrap an element with `xl` rounded corners.
+   *
+   * @param array $element
+   *   The render array.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function wrapRoundedCornersLarge(array $element): array {
+    $element = $this->filterEmptyElements($element);
+    if (empty($element)) {
+      // Element is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_container_rounded_corners_large',
       '#items' => $element,
     ];
   }
