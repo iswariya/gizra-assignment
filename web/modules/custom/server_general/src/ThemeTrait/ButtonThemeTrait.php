@@ -50,4 +50,31 @@ trait ButtonThemeTrait {
     ];
   }
 
+  /**
+   * Build an action button.
+   *
+   * @param array|string|\Drupal\Core\StringTranslation\TranslatableMarkup $title
+   *   The button's title.
+   * @param string $url
+   *   The button's URL.
+   * @param string|null $icon
+   *   The name of the icon to add as prefix. Allowed values are:
+   *   - `download`.
+   *   If NULL, no icon would be added. Defaults to NULL.
+   * @param bool $open_new_tab
+   *   Whether the button should open in a new tab, defaults to FALSE.
+   *
+   * @return array
+   *   The rendered button array.
+   */
+  protected function buildActionButton(array|string|TranslatableMarkup $title, string $url, ?string $icon = NULL, bool $open_new_tab = FALSE): array {
+    return [
+      '#theme' => 'server_theme_action_button',
+      '#url' => $url,
+      '#title'  => $title,
+      '#icon' => $icon,
+      '#open_new_tab' => $open_new_tab,
+    ];
+  }
+
 }

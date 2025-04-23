@@ -1,1 +1,7 @@
-<div class="border-t border-wmo-blue-gray-600 "></div>
+{% if line_type == 'vertical' %}
+  {% set border_class = 'border-r self-stretch' %}
+{% else %}
+  {% set border_class = 'border-t' %}
+{% endif %}
+
+<div class="{{ border_class }} border-wmo-blue-gray-600 "></div>

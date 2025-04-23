@@ -22,6 +22,7 @@ use Drupal\server_general\ThemeTrait\InfoCardThemeTrait;
 use Drupal\server_general\ThemeTrait\LinkThemeTrait;
 use Drupal\server_general\ThemeTrait\NewsTeasersThemeTrait;
 use Drupal\server_general\ThemeTrait\PeopleTeasersThemeTrait;
+use Drupal\server_general\ThemeTrait\PersonCardsThemeTrait;
 use Drupal\server_general\ThemeTrait\QuickLinksThemeTrait;
 use Drupal\server_general\ThemeTrait\QuoteThemeTrait;
 use Drupal\server_general\ThemeTrait\SearchThemeTrait;
@@ -54,6 +55,7 @@ class StyleGuideController extends ControllerBase {
   use LinkThemeTrait;
   use NewsTeasersThemeTrait;
   use PeopleTeasersThemeTrait;
+  use PersonCardsThemeTrait;
   use QuickLinksThemeTrait;
   use QuoteThemeTrait;
   use SearchThemeTrait;
@@ -208,6 +210,12 @@ class StyleGuideController extends ControllerBase {
 
     $element = $this->getWebformElement();
     $build[] = $this->wrapElementNoContainer($element, 'Element: Webform');
+
+    $element = $this->getPersonCard();
+    $build[] = $this->wrapElementWideContainer($element, 'Person Card');
+
+    $element = $this->getPersonCards();
+    $build[] = $this->wrapElementWideContainer($element, 'Person Cards');
 
     return $build;
   }
@@ -922,6 +930,60 @@ class StyleGuideController extends ControllerBase {
       $this->getRandomTitle(),
       $this->buildProcessedText('Decorate one package of cauliflower in six teaspoons of plain vinegar. Try flavoring the crême fraîche gingers with clammy rum and fish sauce, simmered.'),
     );
+  }
+
+  /**
+   * Get Person Card.
+   *
+   * @return array
+   *   The render array.
+   */
+  protected function getPersonCard(): array {
+    $name = 'Jane Cooper';
+
+    $item = $this->buildElementPersonCard(
+      $this->getPlaceholderPersonImage(128),
+      'The image alt ' . $name,
+      $name,
+      'Paradigm Representative',
+      'Admin',
+    );
+
+    return $this->buildElementPersonCards($item);
+  }
+
+  /**
+   * Get People teasers element.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function getPersonCards(): array {
+    $items = [];
+
+    $values = [
+      ['name' => 'Jon Doe', 'job_title' => 'Paradigm Representative', 'role' => 'Admin'],
+      ['name' => 'Smith Allen', 'job_title' => 'Representative', 'role' => 'Editor'],
+      ['name' => 'David Bowie', 'job_title' => 'Accountant', 'role' => 'Editor'],
+      ['name' => 'Rick Morty', 'job_title' => 'Software Engineer', 'role' => 'Super User'],
+      ['name' => 'Jon Doe', 'job_title' => 'Paradigm Representative', 'role' => 'Admin'],
+      ['name' => 'Smith Allen', 'job_title' => 'Representative', 'role' => 'Editor'],
+      ['name' => 'David Bowie', 'job_title' => 'Accountant', 'role' => 'Editor'],
+      ['name' => 'Rick Morty', 'job_title' => 'Software Engineer', 'role' => 'Super User'],
+      ['name' => 'Jon Doe', 'job_title' => 'Paradigm Representative', 'role' => 'Admin'],
+      ['name' => 'Smith Allen', 'job_title' => 'Representative', 'role' => 'Editor'],
+    ];
+    foreach ($values as $value) {
+      $items[] = $this->buildElementPersonCard(
+        $this->getPlaceholderPersonImage(128),
+        'The image alt ' . $value['name'],
+        $value['name'],
+        $value['job_title'],
+        $value['role'],
+      );
+    }
+
+    return $this->buildElementPersonCards($items);
   }
 
 }

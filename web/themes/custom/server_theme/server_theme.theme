@@ -28,6 +28,13 @@ function server_theme_theme() {
     ],
   ];
 
+  // A wrapper to add elements horizontally.
+  $info['server_theme_container_horizontal'] = [
+    'variables' => [
+      'items' => [],
+    ],
+  ];
+
   // A wrapper that has a `gap-y-5` between all elements. All elements on a
   // typical PEVB need to be wrapped by this one, so it keeps a consistent
   // vertical distance between all the elements. Each element can still add
@@ -66,6 +73,15 @@ function server_theme_theme() {
     ],
   ];
 
+  // A wrapper that adds a background color.
+  $info['server_theme_container_bg_color'] = [
+    'variables' => [
+      'items' => [],
+      // Background color.
+      'bg_color' => '',
+    ],
+  ];
+
   // A wrapper that adds a bottom padding `pb-10`. This is likely used on non
   // Landing page PEVB wrapping all the elements, so they have a bottom padding
   // before the footer. For Landing page elements, it's likely not going to be
@@ -77,8 +93,26 @@ function server_theme_theme() {
     ],
   ];
 
+  // A wrapper that adds a top and bottom padding.
+  $info['server_theme_container_top_bottom_padding'] = [
+    'variables' => [
+      'items' => [],
+      // Any value to add as top padding.
+      'top' => '1',
+      // Any value to add as bottom padding.
+      'bottom' => '1',
+    ],
+  ];
+
   // Wrap with `lg` rounded corners.
   $info['server_theme_container_rounded_corners_big'] = [
+    'variables' => [
+      'items' => [],
+    ],
+  ];
+
+  // Wrap with `xl` rounded corners.
+  $info['server_theme_container_rounded_corners_large'] = [
     'variables' => [
       'items' => [],
     ],
@@ -100,6 +134,12 @@ function server_theme_theme() {
     ],
   ];
 
+  // Border container.
+  $info['server_theme_container_border'] = [
+    'variables' => [
+      'element' => [],
+    ],
+  ];
   // Wrapper for "View more" items. Items over the limit will be hidden.
   $info['server_theme_element_items_with_view_more'] = [
     'variables' => [
@@ -251,6 +291,14 @@ function server_theme_theme() {
     ],
   ];
 
+  // Custom card.
+  $info['server_theme_inner_element_custom_layout'] = [
+    'variables' => [
+      // A render array.
+      'items' => NULL,
+    ],
+  ];
+
   // Multiple cards.
   $info['server_theme_cards'] = [
     'variables' => [
@@ -282,9 +330,26 @@ function server_theme_theme() {
     ],
   ];
 
+  // A single Button.
+  $info['server_theme_action_button'] = [
+    'variables' => [
+      'url' => NULL,
+      // The button's text.
+      'title'  => NULL,
+      // Specify an icon. Any icon should be added as SVG in
+      // `server-theme-action-button`.
+      'icon' => NULL,
+      // If TRUE, it will open the link in a new tab.
+      'open_new_tab' => NULL,
+    ],
+  ];
+
   // A simple horizontal line separator.
   $info['server_theme_line_separator'] = [
-    'variables' => [],
+    'variables' => [
+      // Specify horizontal or vertical line separator.
+      'line_type' => NULL,
+    ],
   ];
 
   // A quotation sign, used on the Quote element.
